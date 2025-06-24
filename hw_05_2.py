@@ -3,7 +3,7 @@ from typing import Callable
 
 def generator_numbers(text: str):
     # Пошук усіх дійсних чисел, що відокремлені пробілами
-    pattern = r'\b\d+\.\d+\b'
+    pattern = r'\ \d+\.\d+\ '
     for match in re.findall(pattern, text):
         yield float(match)  # перетворюємо на float
 

@@ -11,7 +11,10 @@ def input_error(func):
     return inner
 
 def parse_input(user_input):
-    cmd, *args = user_input.strip().split()
+    parts = user_input.strip().split()
+    if not parts:
+        return "", []
+    cmd, *args = parts
     return cmd.lower(), args
 
 @input_error
@@ -47,6 +50,10 @@ def main():
     while True:
         user_input = input("Enter a command: ")
         command, args = parse_input(user_input)
+
+        if not command:
+            print("Please enter a command.")
+            continue
 
         if command in ["close", "exit"]:
             print("Good bye!")
